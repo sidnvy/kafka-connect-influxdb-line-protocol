@@ -127,6 +127,8 @@ public abstract class InfluxdbLineProtocol<R extends ConnectRecord<R>> implement
         return (long) (((Double) second) * 1000);
     } else if (second instanceof Integer) {
         return Long.valueOf(((Integer) second).longValue()) * 1000;
+    } else if (second instanceof Long) {
+        return ((long) second) * 1000;
     } else {
       throw new DataException("Expected timestamp to be a Integer or Double, but found " + second.getClass());
     }
